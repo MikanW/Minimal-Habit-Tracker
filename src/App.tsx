@@ -13,17 +13,29 @@ import moment from 'moment';
 // import DataViewerWithType from './Components/DataViewer';
 
 import './App.css';
-import './components/types'
 import Greeting from './components/Greeting';
+import MyNavigation from './components/MyNavigation';
+import { Pages } from './components/types';
+import PageView from './components/PageView';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pageView, setPageView] = useState(Pages.today);
 
   return (
     <div className="App">
       <div className="appBody">
         <ConfigProvider locale={locale}>
+          
           <Greeting userName='Mikan'/>
+
+          <MyNavigation
+            setPageView={setPageView}
+          />
+
+          <PageView
+            type={pageView}
+          />
+
         </ConfigProvider>
       </div>
       

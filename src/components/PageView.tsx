@@ -1,0 +1,34 @@
+import { MyDatePicker } from './MyDatePicker';
+import { useState } from 'react';
+
+import { Pages } from './types'
+//import DataViewerWithType from './DataViewer';
+
+
+const PageView = (props: { type: string }) => {
+
+	let page = <p>Hello</p>;
+
+	if (props.type == Pages.today) {
+		page = <p>Today!</p>;
+	}
+	else if (props.type == Pages.habit) {
+		page = <p>Habit!</p>
+	}
+	else if (props.type == Pages.settings) {
+		page = <p>Settings!</p>;
+	}
+	else {
+		//page = <DataView type={pageView} />;
+		page = <MyDatePicker type={props.type}/>
+	}
+
+	return (
+		<div className="page">
+			{page}
+		</div>
+	);
+
+};
+
+export default PageView;
