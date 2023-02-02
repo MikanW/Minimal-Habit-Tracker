@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  width: auto;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgba(24, 29, 28, 0.9);
+}
+
+
+
+.page {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+}
