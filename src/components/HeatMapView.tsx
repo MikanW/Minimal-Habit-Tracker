@@ -1,9 +1,7 @@
 import React from 'react';
-//import CalHeatmap from 'cal-heatmap';
 // import ReactTooltip from 'react-tooltip';
 import CalendarHeatmap from './react-calendar-heatmap/index.jsx';
 import './react-calendar-heatmap/styles.css';
-// import ReactTooltip from 'react-tooltip';
 
 function shiftDate(date:any, numDays:any) {
     const newDate = new Date(date);
