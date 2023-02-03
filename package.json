@@ -10,11 +10,15 @@
   },
   "dependencies": {
     "antd": "^5.1.7",
+    "cal-heatmap": "^4.0.0-beta.4",
     "moment": "^2.29.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-calendar-heatmap": "^1.9.0",
+    "react-dom": "^18.2.0",
+    "require.js": "^1.0.0"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",

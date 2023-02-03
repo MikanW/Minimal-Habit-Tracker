@@ -2,6 +2,7 @@ import { MyDatePicker } from './MyDatePicker';
 import { useState } from 'react';
 
 import { Pages } from './types'
+import Dataview from './Dataview';
 //import DataViewerWithType from './DataViewer';
 
 
@@ -20,7 +21,7 @@ const PageView = (props: { type: string }) => {
 	}
 	else {
 		//page = <DataView type={pageView} />;
-		page = <MyDatePicker type={props.type}/>
+		page = <Dataview type={props.type}/>
 	}
 
 	return (
