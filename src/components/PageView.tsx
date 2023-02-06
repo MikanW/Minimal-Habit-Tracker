@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import { Pages } from './types'
 import Dataview from './Dataview';
+import AllHabits from './AllHabits';
+
 //import DataViewerWithType from './DataViewer';
 
 
@@ -14,7 +16,7 @@ const PageView = (props: { type: string }) => {
 		page = <p>Today!</p>;
 	}
 	else if (props.type == Pages.habit) {
-		page = <p>Habit!</p>
+		page = <AllHabits />;
 	}
 	else if (props.type == Pages.settings) {
 		page = <p>Settings!</p>;

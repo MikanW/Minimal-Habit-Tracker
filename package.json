@@ -11,11 +11,13 @@
   "dependencies": {
     "antd": "^5.1.7",
     "cal-heatmap": "^4.0.0-beta.4",
+    "firebase": "^8.10.1",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-calendar-heatmap": "^1.9.0",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.2.0",
+    "react-uuid": "^2.0.0",
     "require.js": "^1.0.0"
   },
   "devDependencies": {
