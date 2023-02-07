@@ -2,25 +2,26 @@ import { Card } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
 
-const CardView = () => (
-  <div className='CardView'>
-    <Card 
+export const CardView = (habit: any) => {
+
+  return (
+    <Card
       hoverable
-      title="Default size card"
+      title={habit.habit}
       extra={<a href="#">More</a>}
       style={{
         width: 300,
       }}
       actions={[
-        <SettingOutlined key="setting" onClick={()=>console.log("lalala")}/>,
+        <SettingOutlined key="setting" onClick={() => console.log("lalala")} />,
         <EditOutlined key="edit" />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
     >
-      <p>Card content</p>
-      <p>Card content</p>
-      <p>Card content</p>
+      <p>{habit.habit}</p>
     </Card>
-  </div>
-);
+  )
+
+};
+
 export default CardView;
