@@ -19,3 +19,27 @@
   display: flex;
   flex-direction: column;
 }
+
+#addNewHabitCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.allHabitCards {
+  position: relative;
+}
+
+.addNewIconButton {
+  display: flex;
+}
+
+.habitCard {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}

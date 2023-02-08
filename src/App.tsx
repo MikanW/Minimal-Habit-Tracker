@@ -36,8 +36,6 @@ function App() {
             type={pageView}
           />
 
-          <div id="cal-heatmap">heatmap</div>
-
         </ConfigProvider>
       </div>
       

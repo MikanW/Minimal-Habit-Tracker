@@ -10,7 +10,7 @@ export const CardView = (habit: any) => {
       title={habit.habit}
       extra={<a href="#">More</a>}
       style={{
-        width: 300,
+        width: 300
       }}
       actions={[
         <SettingOutlined key="setting" onClick={() => console.log("lalala")} />,
