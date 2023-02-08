@@ -8,10 +8,6 @@ import 'dayjs/plugin/updateLocale';
 import locale from 'antd/locale/zh_CN';
 import moment from 'moment';
 
-// import CurrentTime from './Components/CurrentTime';
-// import MyNavigation from './Components/MyNavigation';
-// import DataViewerWithType from './Components/DataViewer';
-
 import './App.css';
 import Greeting from './components/Greeting';
 import MyNavigation from './components/MyNavigation';

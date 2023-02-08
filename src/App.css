@@ -1,6 +1,8 @@
 .App {
+  display: flex;
+  align-items: center;
   text-align: center;
-  width: auto;
+  justify-content: center;
 }
 
 .App-header {
@@ -12,12 +14,18 @@
   color: rgba(24, 29, 28, 0.9);
 }
 
-
+.appBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .page {
   width: 1000px;
   display: flex;
   flex-direction: column;
+  margin-top: 5%;
 }
 
 #addNewHabitCard {

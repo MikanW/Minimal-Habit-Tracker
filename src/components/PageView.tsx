@@ -1,11 +1,7 @@
-import { MyDatePicker } from './MyDatePicker';
-import { useState } from 'react';
-
 import { Pages } from './types'
 import Dataview from './Dataview';
 import AllHabits from './AllHabits';
 
-//import DataViewerWithType from './DataViewer';
 
 
 const PageView = (props: { type: string }) => {
@@ -22,7 +18,6 @@ const PageView = (props: { type: string }) => {
 		page = <p>Settings!</p>;
 	}
 	else {
-		//page = <DataView type={pageView} />;
 		page = <Dataview type={props.type}/>
 	}
 

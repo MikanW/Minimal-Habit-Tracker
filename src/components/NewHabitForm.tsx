@@ -23,7 +23,7 @@ export const NewHabitForm = () => {
       name: string;
       company: string;
     }>
-      title="新建表单"
+      title="NewHabit"
       trigger={
         <Card id="NewHabitCard"
           hoverable
