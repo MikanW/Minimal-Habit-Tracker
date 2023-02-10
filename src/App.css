@@ -28,6 +28,15 @@
   margin-top: 5%;
 }
 
+.addNewIconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  margin-top: 25%;
+}
+
 #addNewHabitCard {
   display: flex;
   align-items: center;
@@ -35,9 +44,9 @@
 
   position: absolute;
   top: 0;
-  height: 100%;
 }
 
+/* 
 #NewHabitCard {
   display: flex;
   align-items: center;
@@ -49,17 +58,13 @@
 }
 
 .allHabitCards {
-  display: flex;
   position: relative;
 }
 
-.addNewIconButton {
-  display: flex;
-  align-items: center;
-}
+
 
 .habitCard {
   position: absolute;
   top: 0;
   height: 100%;
-}
+} */

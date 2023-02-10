@@ -1,13 +1,18 @@
 import { Card } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
+export interface habitInfo {
+  habit: any;
+  className: String;
+}
 
-export const CardView = (habit: any) => {
-
+export const CardView = (props: habitInfo) => {
+  const {habit, className } = props;
+  console.log(habit)
   return (
     <Card
       hoverable
-      title={habit.habit}
+      title={habit.name}
       extra={<a href="#">More</a>}
       style={{
         width: 300
@@ -18,7 +23,7 @@ export const CardView = (habit: any) => {
         <EllipsisOutlined key="ellipsis" />,
       ]}
     >
-      <p>{habit.habit}</p>
+      <p>{habit.slogan}</p>
     </Card>
   )
 

@@ -18,9 +18,12 @@ const AllHabits = () => {
   // show habits
   if (habits.length !== 0) {
     return (
-      <Space wrap className="allHabitCards">
-        {habits.map(( habit ) => (
-          <CardView habit={habit.name} key={habit.uuid} className="habitCard" />
+      <Space
+        align="start"å
+        wrap
+        className="allHabitCards">
+        {habits.map((habit) => (
+          <CardView habit={habit} key={habit.uuid} className="habitCard" />
         ))}
         <NewHabitForm />
       </Space>

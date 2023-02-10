@@ -74,6 +74,7 @@ export const NewHabitForm = () => {
           hoverable
           style={{
             width: 300,
+            height: 200
           }}
         >
           <div className='addNewIconButton'>
