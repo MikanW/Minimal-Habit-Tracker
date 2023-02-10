@@ -9,21 +9,57 @@ import {
 import { Button, Form, message, Card, Popover } from 'antd';
 import ColorPicker from './ColorPicker';
 import { useState } from 'react';
+import { db } from './../firebase'
 
-const waitTime = (time: number = 100) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, time);
-  });
-};
+// const waitTime = (time: number = 100) => {
+//   db.collection("users").add({
+//     first: "Ada",
+//     last: "Lovelace",
+//     born: 1815
+//   })
+//     .then((docRef) => {
+//       console.log("Document written with ID: ", docRef.id);
+//     })
+//     .catch((error) => {
+//       console.error("Error adding document: ", error);
+//     });
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(true);
+//     }, time);
+//   });
+// };
+
+
 
 export const NewHabitForm = () => {
   const [form] = Form.useForm<{ name: string; company: string }>();
   const [MainColor, setMainColor] = useState("#aabbcc");
+  
   const onColorChange = (value: string) => {
     setMainColor(value);
     console.log(MainColor);
+  }
+
+  const addNewHabitToDb = (value: any) => {
+    db.collection("habits")
+      .add({
+        name: value.name,
+        slogan: value.slogan,
+        mainColor: MainColor,
+        
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+
+      return new Promise((resolve) => {
+        resolve(true);
+      });
+
   }
 
   return (
@@ -51,10 +87,10 @@ export const NewHabitForm = () => {
         destroyOnClose: true,
         onCancel: () => console.log('run'),
       }}
-      submitTimeout={2000}
+      submitTimeout={1000}
       onFinish={async (values) => {
-        await waitTime(2000);
-        console.log(values.name);
+        await addNewHabitToDb(values);
+        console.log(values)
         message.success('Successfully added!');
         return true;
       }}
@@ -71,15 +107,15 @@ export const NewHabitForm = () => {
         <ProFormText width="lg" name="slogan" label="Slogan" placeholder="a slogan to encourage yourself." />
       </ProForm.Group>
       <ProForm.Group>
-        <Form.Item label="MainColor">
-        <Popover placement="bottomLeft" content={<ColorPicker setSelectedColor={onColorChange} />} title="" trigger="click"> 
+        <Form.Item name="mainColor" label="MainColor">
+          <Popover  placement="bottomLeft" content={<ColorPicker setSelectedColor={onColorChange} />} title="" trigger="click">
             <Button
               type="text"
               style={{ backgroundColor: MainColor }}
             >
             </Button>
-        </Popover>
-            
+          </Popover>
+
         </Form.Item>
         <ProFormText width="md" name="contract" label="合同名称" placeholder="请输入名称" />
         <ProFormDateRangePicker name="contractTime" label="合同生效时间" />
