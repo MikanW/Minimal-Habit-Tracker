@@ -10,6 +10,7 @@ import { Button, Form, message, Card, Popover } from 'antd';
 import ColorPicker from './ColorPicker';
 import { useState } from 'react';
 import { db } from './../firebase'
+import uuid from 'react-uuid'
 
 // const waitTime = (time: number = 100) => {
 //   db.collection("users").add({
@@ -47,7 +48,7 @@ export const NewHabitForm = () => {
         name: value.name,
         slogan: value.slogan,
         mainColor: MainColor,
-        
+        uuid: uuid(),
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
