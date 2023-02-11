@@ -1,8 +1,10 @@
 import { db } from './../firebase'
 import React, { useState, useEffect } from 'react'
-import { Space } from 'antd'
+import { Space, Card } from 'antd'
+import { PlusOutlined } from '@ant-design/icons';
 import { CardView } from './CardView'
-import { NewHabitForm } from './NewHabitForm'
+import { HabitForm } from './HabitForm'
+
 
 
 const AllHabits = () => {
@@ -19,13 +21,13 @@ const AllHabits = () => {
   if (habits.length !== 0) {
     return (
       <Space
-        align="start"å
+        align="start"
         wrap
         className="allHabitCards">
         {habits.map((habit) => (
           <CardView habit={habit} key={habit.uuid} className="habitCard" />
         ))}
-        <NewHabitForm />
+        <HabitForm isNewHabit={true}/>
       </Space>
     );
   }

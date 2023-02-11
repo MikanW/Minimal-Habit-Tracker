@@ -1,5 +1,8 @@
-import { Card } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Card, Popover } from 'antd';
+import { PlusCircleOutlined, EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
+import HabitForm from './HabitForm';
+
+
 
 export interface habitInfo {
   habit: any;
@@ -7,19 +10,27 @@ export interface habitInfo {
 }
 
 export const CardView = (props: habitInfo) => {
-  const {habit, className } = props;
+  const { habit, className } = props;
   console.log(habit)
   return (
     <Card
       hoverable
       title={habit.name}
-      extra={<a href="#">More</a>}
       style={{
-        width: 300
+        width: 300,
+        backgroundColor: habit.MainColor
       }}
       actions={[
-        <SettingOutlined key="setting" onClick={() => console.log("lalala")} />,
-        <EditOutlined key="edit" />,
+        (<Popover content={"add new data into habit"} trigger="hover">
+          <PlusCircleOutlined key="addCheckPoint" />
+        </Popover>),
+
+        (<Popover content={"show data of habit"} trigger="hover">
+          <BarChartOutlined key="dataview" />
+        </Popover>),
+
+        <HabitForm isNewHabit={false} habitInfo={habit} />,
+
         <EllipsisOutlined key="ellipsis" />,
       ]}
     >

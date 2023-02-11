@@ -3,11 +3,12 @@ import { useState } from 'react';
 
 interface ColorPickerProps {
   setSelectedColor: Function;
+  initColor: string;
 }
 
 const ColorPicker = ( props:ColorPickerProps ) => {
-  const { setSelectedColor } = props;
-  const [color, setColor] = useState("#aabbcc");
+  const { setSelectedColor, initColor } = props;
+  const [color, setColor] = useState(initColor);
 
   const onColorChange = (value: string) => {
     setColor(value);

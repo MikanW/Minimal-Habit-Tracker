@@ -1,4 +1,4 @@
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, SettingOutlined } from '@ant-design/icons';
 import {
   ModalForm,
   ProForm,
@@ -9,34 +9,52 @@ import {
 import { Button, Form, message, Card, Popover } from 'antd';
 import ColorPicker from './ColorPicker';
 import { useState } from 'react';
-import { db } from './../firebase'
+import { db } from '../firebase'
 import uuid from 'react-uuid'
 
-// const waitTime = (time: number = 100) => {
-//   db.collection("users").add({
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-//   })
-//     .then((docRef) => {
-//       console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch((error) => {
-//       console.error("Error adding document: ", error);
-//     });
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve(true);
-//     }, time);
-//   });
-// };
+const NewHabitFormTrigger =
 
+  <Card id="NewHabitCard"
+    hoverable
+    style={{
+      width: 300,
+      height: 200
+    }}
+  >
+    <div className='addNewIconButton'>
+      <PlusOutlined />
+    </div>
+  </Card>;
 
+const EditHabitFormTrigger = (
+  <Popover content={"edit habit setting"} trigger="hover">
+    <SettingOutlined key="setting" onClick={() => console.log("lalala")} />
+  </Popover>
+);
 
-export const NewHabitForm = () => {
+interface HabitFormProps {
+  isNewHabit: boolean,
+  habitInfo?: any
+}
+
+const setFormInitValue = (habitInfo: any) => {
+  habitInfo = {
+    name: "",
+    slogan: "",
+    mainColor: "#b5e9dc",
+  }
+};
+
+export const HabitForm = (porps: HabitFormProps) => {
+  const { isNewHabit, habitInfo } = porps;
+
+  if (isNewHabit) {
+    setFormInitValue(habitInfo);
+  }
+
   const [form] = Form.useForm<{ name: string; company: string }>();
-  const [MainColor, setMainColor] = useState("#aabbcc");
-  
+  const [MainColor, setMainColor] = useState( isNewHabit? "#aabbcc":habitInfo.mainColor);
+
   const onColorChange = (value: string) => {
     setMainColor(value);
     console.log(MainColor);
@@ -57,9 +75,9 @@ export const NewHabitForm = () => {
         console.error("Error adding document: ", error);
       });
 
-      return new Promise((resolve) => {
-        resolve(true);
-      });
+    return new Promise((resolve) => {
+      resolve(true);
+    });
 
   }
 
@@ -70,18 +88,7 @@ export const NewHabitForm = () => {
     }>
       title="NewHabit"
       trigger={
-        <Card id="NewHabitCard"
-          hoverable
-          style={{
-            width: 300,
-            height: 200
-          }}
-        >
-          <div className='addNewIconButton'>
-            <PlusOutlined />
-          </div>
-
-        </Card>
+        isNewHabit ? NewHabitFormTrigger : EditHabitFormTrigger
       }
       form={form}
       autoFocusFirstInput
@@ -104,16 +111,31 @@ export const NewHabitForm = () => {
           label="Habit Name"
           tooltip="Max Length: 24 "
           placeholder="name of new habit"
+          initialValue={isNewHabit ? "" : habitInfo.name}
         />
 
-        <ProFormText width="lg" name="slogan" label="Slogan" placeholder="a slogan to encourage yourself." />
+        <ProFormText
+          width="lg"
+          name="slogan"
+          label="Slogan"
+          placeholder="a slogan to encourage yourself."
+          initialValue={isNewHabit ? "" : habitInfo.slogan}
+        />
+
       </ProForm.Group>
+
       <ProForm.Group>
         <Form.Item name="mainColor" label="MainColor">
-          <Popover  placement="bottomLeft" content={<ColorPicker setSelectedColor={onColorChange} />} title="" trigger="click">
+          <Popover
+            placement="bottomLeft"
+            content={<ColorPicker setSelectedColor={onColorChange} initColor={isNewHabit? "#b5e9dc": habitInfo.mainColor}/>}
+            title=""
+            trigger="click"
+          >
             <Button
-              type="text"
-              style={{ backgroundColor: MainColor }}
+              style={{ 
+                backgroundColor: MainColor
+              }}
             >
             </Button>
           </Popover>
@@ -153,4 +175,4 @@ export const NewHabitForm = () => {
   );
 };
 
-export default NewHabitForm;
+export default HabitForm;
