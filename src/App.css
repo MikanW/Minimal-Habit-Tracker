@@ -3,6 +3,8 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+
+  margin-top: 3rem;
 }
 
 .App-header {
@@ -22,10 +24,43 @@
 }
 
 .page {
-  width: 1000px;
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
+  margin-top: 1rem;
+}
+
+/* Today */
+
+.Today {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+
+  flex-direction: row;
+}
+
+.TodayLeftCol {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.TodayRightCol {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 2rem;
+}
+
+.CurrentTimeCard {
+  width: 100%;
+}
+
+.CalenderCard {
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
 .addNewIconButton {
