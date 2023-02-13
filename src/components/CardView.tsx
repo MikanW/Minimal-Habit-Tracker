@@ -1,6 +1,7 @@
 import { Card, Popover } from 'antd';
 import { PlusCircleOutlined, EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
 import HabitForm from './HabitForm';
+import CheckPointForm from './CheckPointForm';
 
 
 
@@ -21,9 +22,7 @@ export const CardView = (props: habitInfo) => {
         backgroundColor: habit.MainColor
       }}
       actions={[
-        (<Popover content={"add new data into habit"} trigger="hover">
-          <PlusCircleOutlined key="addCheckPoint" />
-        </Popover>),
+        <CheckPointForm />,
 
         (<Popover content={"show data of habit"} trigger="hover">
           <BarChartOutlined key="dataview" />
