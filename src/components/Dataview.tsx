@@ -6,6 +6,7 @@ import CardView from './CardView';
 import HeatMapView from './HeatMapView';
 import { MyDatePicker } from './MyDatePicker';
 import { Pages } from './types';
+import DailyView from './DailyView';
 
 export const DataView = (props: { type: string }) => {
   const [date, setDate] = useState("");
@@ -33,7 +34,8 @@ export const DataView = (props: { type: string }) => {
 
 const decideViewer = (type: string) => {
   if (type === Pages.dataview.dailyView) {
-    return <CardView />
+    //return <CardView />
+    return <DailyView />
   }
 
   if (type === Pages.dataview.weeklyView) {
