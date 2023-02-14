@@ -45,8 +45,8 @@ const setFormInitValue = (habitInfo: any) => {
   }
 };
 
-export const HabitForm = (porps: HabitFormProps) => {
-  const { isNewHabit, habitInfo } = porps;
+export const HabitForm = (props: HabitFormProps) => {
+  const { isNewHabit, habitInfo } = props;
 
   if (isNewHabit) {
     setFormInitValue(habitInfo);
@@ -61,15 +61,15 @@ export const HabitForm = (porps: HabitFormProps) => {
   }
 
   const addNewHabitToDb = (value: any) => {
-    db.collection("habits")
-      .add({
+    const newId = uuid();
+    db.collection("habits").doc(newId)
+      .set({
         name: value.name,
         slogan: value.slogan,
         mainColor: MainColor,
-        uuid: uuid(),
+        uuid:newId,
       })
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+      .then(() => {
       })
       .catch((error) => {
         console.error("Error adding document: ", error);

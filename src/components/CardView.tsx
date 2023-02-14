@@ -22,7 +22,7 @@ export const CardView = (props: habitInfo) => {
         backgroundColor: habit.MainColor
       }}
       actions={[
-        <CheckPointForm />,
+        <CheckPointForm habitId={String(habit.uuid)}/>,
 
         (<Popover content={"show data of habit"} trigger="hover">
           <BarChartOutlined key="dataview" />

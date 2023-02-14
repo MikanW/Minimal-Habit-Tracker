@@ -3,33 +3,37 @@ import {
   ModalForm,
   ProForm,
   ProFormText,
+  ProFormDigit
 } from '@ant-design/pro-components';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { db } from '../firebase'
 import uuid from 'react-uuid'
 
+interface FormProps  {
+  habitId: string;
+}
+
 const trigger = (
-   <Popover content={"add new data into habit"} trigger="hover">
-    <PlusCircleOutlined key="addCheckPoint"/>
-   </Popover>
+  <Popover content={"add new data into habit"} trigger="hover">
+    <PlusCircleOutlined key="addCheckPoint" />
+  </Popover>
 );
 
-const CheckPointForm = () => {
-  const [form] = Form.useForm<{ name: string; company: string }>();
+const CheckPointForm = ( props: FormProps ) => {
+  const { habitId } = props;
+  const [form] = Form.useForm<{ value: number; note: string }>();
 
-  const addNewCheckPointToDb = (habit: any) => {
-    
-    // need a function to get id of a habitName from db
-    
-    db.collection("habits").doc('habit id').collection('checkPoints')
-      .add({
-        time: '',
-        value: '',
-        note: '',
-        uuid: uuid(),
+  const addNewCheckPointToDb = () => {
+    const newId = uuid();
+    db.collection("habits").doc(habitId)
+    .collection('checkPoints').doc(newId)
+      .set({
+        time: '1',
+        value: '11',
+        note: '111',
+        uuid: newId,
       })
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+      .then(() => {
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -42,7 +46,10 @@ const CheckPointForm = () => {
   }
 
   return (
-    <ModalForm
+    <ModalForm<{
+      value: number;
+      note: string;
+    }>
       title="NewCheckPoint"
       trigger={trigger}
       autoFocusFirstInput
@@ -58,6 +65,16 @@ const CheckPointForm = () => {
         return true;
       }}
     >
+      <ProForm.Group>
+        <ProFormDigit
+          label="Value"
+          name="value"
+          width="sm"
+          min={1}
+          placeholder={'根据习惯的计数方式设置不同placeholder'}
+        />
+      </ProForm.Group>
+
       <ProForm.Group>
         <ProFormText
           width="lg"
