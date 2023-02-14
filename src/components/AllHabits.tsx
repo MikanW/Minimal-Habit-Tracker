@@ -18,7 +18,7 @@ const AllHabits = () => {
   }, []);
 
   // show habits
-  if (habits.length !== 0) {
+
     return (
       <Space
         align="start"
@@ -30,10 +30,6 @@ const AllHabits = () => {
         <HabitForm isNewHabit={true}/>
       </Space>
     );
-  }
-  else {
-    return <p>Loading……</p>
-  }
 
 }
 

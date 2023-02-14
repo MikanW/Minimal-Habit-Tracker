@@ -23,14 +23,14 @@ const CheckPointForm = ( props: FormProps ) => {
   const { habitId } = props;
   const [form] = Form.useForm<{ value: number; note: string }>();
 
-  const addNewCheckPointToDb = () => {
+  const addNewCheckPointToDb = ( value: any ) => {
     const newId = uuid();
     db.collection("habits").doc(habitId)
     .collection('checkPoints').doc(newId)
       .set({
         time: '1',
-        value: '11',
-        note: '111',
+        value: value.count,
+        note: value.note,
         uuid: newId,
       })
       .then(() => {
@@ -47,7 +47,7 @@ const CheckPointForm = ( props: FormProps ) => {
 
   return (
     <ModalForm<{
-      value: number;
+      count: number;
       note: string;
     }>
       title="NewCheckPoint"
@@ -67,8 +67,8 @@ const CheckPointForm = ( props: FormProps ) => {
     >
       <ProForm.Group>
         <ProFormDigit
-          label="Value"
-          name="value"
+          label="count"
+          name="count"
           width="sm"
           min={1}
           placeholder={'根据习惯的计数方式设置不同placeholder'}
