@@ -5,33 +5,45 @@ import {
   ProFormText,
   ProFormDigit
 } from '@ant-design/pro-components';
-import { PlusCircleOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import { db } from '../firebase'
 import uuid from 'react-uuid'
+import firebase from 'firebase';
 
-interface FormProps  {
+interface FormProps {
   habitId: string;
+  isNewCheckPoint: boolean;
+  checkPointId?: string;
 }
 
-const trigger = (
+const newCheckPointTrigger = (
   <Popover content={"add new data into habit"} trigger="hover">
-    <PlusCircleOutlined key="addCheckPoint" />
+    <EditOutlined key="editCheckPoint" />
   </Popover>
 );
 
-const CheckPointForm = ( props: FormProps ) => {
-  const { habitId } = props;
+const editCheckPointTrigger = (
+  <Popover content={"add new data into habit"} trigger="hover">
+    <PlusCircleOutlined key="addCheckPoint" />
+  </Popover>
+)
+
+const CheckPointForm = (props: FormProps) => {
+  const { habitId, isNewCheckPoint, checkPointId } = props;
   const [form] = Form.useForm<{ value: number; note: string }>();
 
-  const addNewCheckPointToDb = ( value: any ) => {
+  const addNewCheckPointToDb = (value: any) => {
+    console.log("addNewCheckPointToDb");
+    console.log(habitId);
     const newId = uuid();
     db.collection("habits").doc(habitId)
-    .collection('checkPoints').doc(newId)
+      .collection('checkPoints').doc(newId)
       .set({
         time: '1',
         value: value.count,
         note: value.note,
         uuid: newId,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
       })
@@ -42,7 +54,22 @@ const CheckPointForm = ( props: FormProps ) => {
     return new Promise((resolve) => {
       resolve(true);
     });
+  }
 
+  const editCheckPoint = (value: any, checkPointUuid: string) => {
+    db.collection("habits").doc(habitId)
+      .collection('checkPoints').doc(checkPointUuid)
+      .set({
+        time: '1',
+        value: value.count,
+        note: value.note,
+        editedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   return (
@@ -50,8 +77,8 @@ const CheckPointForm = ( props: FormProps ) => {
       count: number;
       note: string;
     }>
-      title="NewCheckPoint"
-      trigger={trigger}
+      title={isNewCheckPoint ? "NewCheckPoint" : "EditCheckPoint"}
+      trigger={isNewCheckPoint ? newCheckPointTrigger : editCheckPointTrigger}
       autoFocusFirstInput
       modalProps={{
         destroyOnClose: true,
@@ -59,7 +86,13 @@ const CheckPointForm = ( props: FormProps ) => {
       }}
       submitTimeout={1000}
       onFinish={async (values) => {
-        await addNewCheckPointToDb(values);
+        if (isNewCheckPoint) {
+          await addNewCheckPointToDb(values);
+        }
+        else {
+          await editCheckPoint(values, String(checkPointId));
+        }
+
         console.log(values)
         message.success('Successfully added!');
         return true;

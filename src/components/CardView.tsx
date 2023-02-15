@@ -22,7 +22,7 @@ export const CardView = (props: habitInfo) => {
         backgroundColor: habit.MainColor
       }}
       actions={[
-        <CheckPointForm habitId={String(habit.uuid)}/>,
+        <CheckPointForm habitId={String(habit.uuid)} isNewCheckPoint={true} />,
 
         (<Popover content={"show data of habit"} trigger="hover">
           <BarChartOutlined key="dataview" />
@@ -37,7 +37,7 @@ export const CardView = (props: habitInfo) => {
       <p>Summary占位</p>
     </Card>
   )
-  
+
 };
 
 export default CardView;
