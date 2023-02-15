@@ -35,8 +35,8 @@
   display: flex;
   align-items: center;
   align-content: center;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 
   flex-direction: row;
 }
@@ -80,30 +80,6 @@
   position: absolute;
   top: 0;
 }
-
-/* 
-#NewHabitCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-
-.allHabitCards {
-  position: relative;
-}
-
-
-
-.habitCard {
-  position: absolute;
-  top: 0;
-  height: 100%;
-} */
-
 
 /* daily */
 

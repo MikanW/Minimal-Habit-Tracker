@@ -34,9 +34,10 @@ export const CardView = (props: habitInfo) => {
       ]}
     >
       <p>{habit.slogan}</p>
+      <p>Summary占位</p>
     </Card>
   )
-
+  
 };
 
 export default CardView;
