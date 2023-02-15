@@ -1,7 +1,6 @@
 import { db } from './../firebase'
-import React, { useState, useEffect } from 'react'
-import { Space, Card } from 'antd'
-import { PlusOutlined } from '@ant-design/icons';
+import { useState, useEffect } from 'react'
+import { Space } from 'antd'
 import { CardView } from './CardView'
 import { HabitForm } from './HabitForm'
 

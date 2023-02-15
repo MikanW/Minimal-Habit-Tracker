@@ -33,8 +33,6 @@ const CheckPointForm = (props: FormProps) => {
   const [form] = Form.useForm<{ value: number; note: string }>();
 
   const addNewCheckPointToDb = (value: any) => {
-    console.log("addNewCheckPointToDb");
-    console.log(habitId);
     const newId = uuid();
     db.collection("habits").doc(habitId)
       .collection('checkPoints').doc(newId)

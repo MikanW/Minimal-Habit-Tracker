@@ -1,7 +1,9 @@
-import { Card, Popover } from 'antd';
-import { PlusCircleOutlined, EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
+import { Card, Popover, Drawer } from 'antd';
+import { EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
 import HabitForm from './HabitForm';
 import CheckPointForm from './CheckPointForm';
+import AllCheckPoints from './AllCheckPoints';
+import { useState } from 'react';
 
 
 
@@ -12,30 +14,49 @@ export interface habitInfo {
 
 export const CardView = (props: habitInfo) => {
   const { habit, className } = props;
-  console.log(habit)
+
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Card
-      hoverable
-      title={habit.name}
-      style={{
-        width: 300,
-        backgroundColor: habit.MainColor
-      }}
-      actions={[
-        <CheckPointForm habitId={String(habit.uuid)} isNewCheckPoint={true} />,
+    <>
+      <Card
+        hoverable
+        title={habit.name}
+        style={{
+          width: 300,
+          backgroundColor: habit.MainColor
+        }}
+        actions={[
+          <CheckPointForm habitId={String(habit.uuid)} isNewCheckPoint={true} />,
 
-        (<Popover content={"show data of habit"} trigger="hover">
-          <BarChartOutlined key="dataview" />
-        </Popover>),
+          (<Popover content={"show data of habit"} trigger="hover">
+            <BarChartOutlined key="dataview" />
+          </Popover>),
 
-        <HabitForm isNewHabit={false} habitInfo={habit} />,
+          <HabitForm isNewHabit={false} habitInfo={habit} />,
 
-        <EllipsisOutlined key="ellipsis" />,
-      ]}
-    >
-      <p>{habit.slogan}</p>
-      <p>Summary占位</p>
-    </Card>
+          <EllipsisOutlined key="ellipsis" />,
+        ]}
+        onClick={showDrawer}
+      >
+        <p>{habit.slogan}</p>
+        <p>Summary占位</p>
+      </Card>
+      <Drawer title="All CheckPoints" placement="right" onClose={onClose} open={open}>
+        <AllCheckPoints habitId={habit.uuid} />
+      </Drawer>
+
+
+    </>
+
   )
 
 };

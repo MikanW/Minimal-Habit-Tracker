@@ -13,6 +13,7 @@
     "antd": "^5.1.7",
     "cal-heatmap": "^4.0.0-beta.4",
     "firebase": "^8.10.1",
+    "firebase-firestore-timestamp": "^1.0.4",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-calendar-heatmap": "^1.9.0",
