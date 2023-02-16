@@ -63,6 +63,8 @@
   margin-top: 1.5rem;
 }
 
+/* Habits */
+
 .addNewIconButton {
   display: flex;
   align-items: center;
@@ -79,6 +81,10 @@
 
   position: absolute;
   top: 0;
+}
+
+.allCheckPoints {
+  border: 1px;
 }
 
 /* daily */

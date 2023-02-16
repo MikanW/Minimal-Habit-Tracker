@@ -32,7 +32,6 @@ export const CardView = (props: habitInfo) => {
         title={habit.name}
         style={{
           width: 300,
-          backgroundColor: habit.MainColor
         }}
         actions={[
           <CheckPointForm habitId={String(habit.uuid)} isNewCheckPoint={true} />,
@@ -45,13 +44,21 @@ export const CardView = (props: habitInfo) => {
 
           <EllipsisOutlined key="ellipsis" />,
         ]}
-        onClick={showDrawer}
       >
-        <p>{habit.slogan}</p>
-        <p>Summary占位</p>
+        <div className='cardBody' onClick={showDrawer}>
+          <p>{habit.slogan}</p>
+          <p>Summary占位</p>
+        </div>
+
       </Card>
-      <Drawer title="All CheckPoints" placement="right" onClose={onClose} open={open}>
-        <AllCheckPoints habitId={habit.uuid} />
+      <Drawer 
+        title="All CheckPoints" 
+        placement="bottom" 
+        height='80%'
+        onClose={onClose} 
+        open={open}
+        >
+          <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>
       </Drawer>
 
 

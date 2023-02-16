@@ -1,7 +1,6 @@
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
-import TimelineItem from 'antd/es/timeline/TimelineItem';
 
 const DailyView: React.FC = () => {
   return (
