@@ -7,21 +7,41 @@
   margin-top: 3rem;
 }
 
-.App-header {
+.dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgba(24, 29, 28, 0.9);
 }
 
-.appBody {
+.header {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  color: rgba(24, 29, 28, 0.9);
+
 }
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: 5rem;
+}
+
+.greeting {
+  margin-left: 1rem;
+}
+
+.signInBtn {
+  margin-right: 5rem;
+}
+
 
 .page {
   display: flex;
