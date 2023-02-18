@@ -9,6 +9,8 @@ import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import { db } from '../firebase'
 import uuid from 'react-uuid'
 import firebase from 'firebase';
+import { UserIdContext } from './../Data/context';
+import { useContext } from 'react';
 
 interface FormProps {
   habitId: string;
@@ -31,10 +33,11 @@ const editCheckPointTrigger = (
 const CheckPointForm = (props: FormProps) => {
   const { habitId, isNewCheckPoint, checkPointId } = props;
   const [form] = Form.useForm<{ value: number; note: string }>();
+  const userId = useContext(UserIdContext);
 
   const addNewCheckPointToDb = (value: any) => {
     const newId = uuid();
-    db.collection("habits").doc(habitId)
+    db.collection('users').doc(userId).collection("habits").doc(habitId)
       .collection('checkPoints').doc(newId)
       .set({
         time: '1',
@@ -55,7 +58,7 @@ const CheckPointForm = (props: FormProps) => {
   }
 
   const editCheckPoint = (value: any, checkPointUuid: string) => {
-    db.collection("habits").doc(habitId)
+    db.collection('users').doc(userId).collection("habits").doc(habitId)
       .collection('checkPoints').doc(checkPointUuid)
       .set({
         time: '1',

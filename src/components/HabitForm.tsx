@@ -6,10 +6,11 @@ import {
 } from '@ant-design/pro-components';
 import { Button, Form, message, Card, Popover } from 'antd';
 import ColorPicker from './ColorPicker';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { db } from '../firebase'
 import uuid from 'react-uuid'
 import firebase from 'firebase';
+import { UserIdContext } from './../Data/context';
 
 const NewHabitFormTrigger =
 
@@ -46,7 +47,8 @@ const setFormInitValue = (habitInfo: any) => {
 
 export const HabitForm = (props: HabitFormProps) => {
   const { isNewHabit, habitInfo } = props;
-
+  const userId = useContext(UserIdContext);
+  
   if (isNewHabit) {
     setFormInitValue(habitInfo);
   }
@@ -60,7 +62,7 @@ export const HabitForm = (props: HabitFormProps) => {
   }
 
   const updateHabitToDb = (value: any, uuid: string) => {
-    db.collection("habits").doc(uuid)
+    db.collection('users').doc(userId).collection("habits").doc(uuid)
       .set({
         name: value.name,
         slogan: value.slogan,
@@ -78,7 +80,7 @@ export const HabitForm = (props: HabitFormProps) => {
 
   const addNewHabitToDb = (value: any) => {
     const newId = uuid();
-    db.collection("habits").doc(newId)
+    db.collection('users').doc(userId).collection("habits").doc(newId)
       .set({
         name: value.name,
         slogan: value.slogan,

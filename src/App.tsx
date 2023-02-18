@@ -15,6 +15,9 @@ import { Pages } from './components/types';
 import PageView from './components/PageView';
 import { auth, provider } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { UserIdContext } from './Data/context';
+
+
 
 function App() {
   const [pageView, setPageView] = useState(Pages.today);
@@ -35,7 +38,7 @@ function App() {
   }
 
   const signOut = () => {
-   auth.signOut();
+    auth.signOut();
   };
 
   const SignInBtn = (
@@ -49,39 +52,40 @@ function App() {
 
   const SignOutBtn = (
     <Button
-    size='large'
-    onClick={signOut}
-    className='signInBtn'
-  >
-    SignOut
-  </Button>
-);
-  
+      size='large'
+      onClick={signOut}
+      className='signInBtn'
+    >
+      SignOut
+    </Button>
+  );
+
   if (user) {
-    
-    return(
-      <div className="App">
-      <div className="appBody">
-        <ConfigProvider locale={locale}>
-  
-        <div className='dashboard'>
-        <div className='header'>
-          <Greeting userName='Mikan' photoUrl={user.photoURL}/>
-          {SignOutBtn}
-        </div>
-  
-        
-        <MyNavigation
-          setPageView={setPageView}
-        />
-        <PageView
-          type={pageView}
-        />
-      </div>
-  
-        </ConfigProvider>
-      </div>
-    </div>
+
+    return (
+      <ConfigProvider locale={locale} >
+        <UserIdContext.Provider value={user.uid} >
+          <div className="App">
+            <div className="appBody">
+
+              <div className='dashboard'>
+                <div className='header'>
+                  <Greeting userName='Mikan' photoUrl={user.photoURL} />
+                  {SignOutBtn}
+                </div>
+
+                <MyNavigation
+                  setPageView={setPageView}
+                />
+                <PageView
+                  type={pageView}
+                />
+              </div>
+
+            </div>
+          </div>
+        </UserIdContext.Provider>
+      </ConfigProvider>
     )
 
   }

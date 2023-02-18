@@ -1,16 +1,19 @@
 import { db } from './../firebase'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Space } from 'antd'
 import { CardView } from './CardView'
 import { HabitForm } from './HabitForm'
-
+import { UserIdContext } from './../Data/context';
 
 
 const AllHabits = () => {
   const [habits, setHabits] = useState([]);
 
+  const userId = useContext(UserIdContext);
+
+
   useEffect(() => {
-    db.collection("habits")
+    db.collection('users').doc(userId).collection("habits")
       .onSnapshot((snapshot) => {
         setHabits(snapshot.docs.map(doc => doc.data()))
       })
@@ -19,6 +22,7 @@ const AllHabits = () => {
   // show habits
 
     return (
+
       <Space
         align="start"
         wrap

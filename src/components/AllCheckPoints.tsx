@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Timeline, Card } from 'antd'
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { db } from './../firebase'
-
+import { UserIdContext } from './../Data/context';
 
 
 export interface HabitInfo {
@@ -13,14 +13,15 @@ export interface HabitInfo {
 
 const AllCheckPoints = (props: HabitInfo) => {
   const { habitId, mainColor } = props;
+  const userId = useContext(UserIdContext);
 
-  let habitRef = db.collection("habits").doc(habitId);
+  let habitRef = db.collection('users').doc(userId).collection("habits").doc(habitId);
 
   const [checkPointsData, setcheckPointsData] = useState([]);
   //const [groupBy, setGroupBy] = useState(); // todo: collapse groups
 
   useEffect(() => {
-    db.collection("habits").doc(habitId).collection("checkPoints").orderBy("createdAt", "desc")
+    db.collection('users').doc(userId).collection("habits").doc(habitId).collection("checkPoints").orderBy("createdAt", "desc")
       .onSnapshot((snapshot) => {
         setcheckPointsData(snapshot.docs.map(doc => doc.data()))
       })
