@@ -15,8 +15,6 @@ const AllCheckPoints = (props: HabitInfo) => {
   const { habitId, mainColor } = props;
   const userId = useContext(UserIdContext);
 
-  let habitRef = db.collection('users').doc(userId).collection("habits").doc(habitId);
-
   const [checkPointsData, setcheckPointsData] = useState([]);
   //const [groupBy, setGroupBy] = useState(); // todo: collapse groups
 
@@ -33,9 +31,13 @@ const AllCheckPoints = (props: HabitInfo) => {
     
     data = (
       checkPointsData.map((checkPoint) => {
+        console.log(checkPoint);
+        let date = '';
+        
+        if(checkPoint.createdAt) {
+          date = checkPoint.createdAt.toDate().toUTCString();
+        }
 
-        const date = checkPoint.createdAt.toDate().toUTCString();
-        console.log(mainColor)
         return (
           <Timeline.Item 
             className='TimelineItem'
