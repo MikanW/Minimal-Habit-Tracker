@@ -3,8 +3,9 @@ import { EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
 import HabitForm from './HabitForm';
 import CheckPointForm from './CheckPointForm';
 import { useState } from 'react';
-import HabitDataDrawer from './Habit/HabitDataDrawer';
-import AllCheckPoints from './AllCheckPoints';
+import HabitDrawer from './Habit/HabitDrawer';
+import AllCheckPoints from './Habit/AllCheckPoints';
+import { triggerFocus } from 'antd/es/input/Input';
 
 
 
@@ -54,7 +55,7 @@ export const CardView = (props: habitInfo) => {
 
       </Card>
 
-      <HabitDataDrawer open={open} onClose={onClose} habit={habit} contents={drawerContents}/>
+      <HabitDrawer open={open} onClose={onClose} habit={habit} contents={drawerContents} isPositionBottom={false}/>
 
     </>
 

@@ -1,8 +1,8 @@
 import { Drawer } from 'antd';
-import AllCheckPoints from '../AllCheckPoints';
 
 interface DarwerInfo {
   open: boolean;
+  isPositionBottom: boolean;
   onClose: any;
   habit: any;
   contents: any;
@@ -10,16 +10,16 @@ interface DarwerInfo {
 
 
 
-export const HabitDataDrawer = ( porps: DarwerInfo ) => {
-  const {open, onClose, habit, contents} = porps;
+export const HabitDrawer = ( porps: DarwerInfo ) => {
+  const {open, onClose, habit, contents, isPositionBottom} = porps;
 
   return (
     <Drawer
       title = {habit.name + "✨" + habit.slogan}
       onClose={onClose} 
       open={open}
-      placement="bottom" 
-      height='80%'
+      placement={ isPositionBottom? 'bottom' : 'right' }
+      height='85%'
     >
       {contents}
     </Drawer>
@@ -27,5 +27,5 @@ export const HabitDataDrawer = ( porps: DarwerInfo ) => {
 };
 
 
-export default HabitDataDrawer;
+export default HabitDrawer;
 

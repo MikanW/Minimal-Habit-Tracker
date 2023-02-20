@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import { Timeline, Card } from 'antd'
 import { CheckCircleOutlined } from '@ant-design/icons';
-import { db } from './../firebase'
-import { UserIdContext } from './../Data/context';
+import { db } from '../../firebase'
+import { UserIdContext } from '../../Data/context';
 
 
 export interface HabitInfo {
@@ -28,18 +28,18 @@ const AllCheckPoints = (props: HabitInfo) => {
   let data;
 
   if (checkPointsData.length !== 0) {
-    
+
     data = (
       checkPointsData.map((checkPoint) => {
         console.log(checkPoint);
         let date = '';
-        
-        if(checkPoint.createdAt) {
+
+        if (checkPoint.createdAt) {
           date = checkPoint.createdAt.toDate().toUTCString();
         }
 
         return (
-          <Timeline.Item 
+          <Timeline.Item
             className='TimelineItem'
             key={checkPoint.uuid}
             dot={<CheckCircleOutlined />}
@@ -63,9 +63,12 @@ const AllCheckPoints = (props: HabitInfo) => {
   }
 
   return (
-    <Timeline className='allCheckPoints'>
-      {data}
-    </Timeline>
+    <div className='wrapper-allCheckPoints'>
+      <Timeline className='allCheckPoints'>
+        {data}
+      </Timeline>
+    </div>
+
   );
 }
 
