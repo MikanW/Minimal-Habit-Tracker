@@ -2,8 +2,9 @@ import { Card, Popover, Drawer } from 'antd';
 import { EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
 import HabitForm from './HabitForm';
 import CheckPointForm from './CheckPointForm';
-import AllCheckPoints from './AllCheckPoints';
 import { useState } from 'react';
+import HabitDataDrawer from './Habit/HabitDataDrawer';
+import AllCheckPoints from './AllCheckPoints';
 
 
 
@@ -25,6 +26,7 @@ export const CardView = (props: habitInfo) => {
     setOpen(false);
   };
 
+  const drawerContents = <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>;
   return (
     <>
       <Card
@@ -51,16 +53,8 @@ export const CardView = (props: habitInfo) => {
         </div>
 
       </Card>
-      <Drawer 
-        title="All CheckPoints" 
-        placement="bottom" 
-        height='80%'
-        onClose={onClose} 
-        open={open}
-        >
-          <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>
-      </Drawer>
 
+      <HabitDataDrawer open={open} onClose={onClose} habit={habit} contents={drawerContents}/>
 
     </>
 
