@@ -2,25 +2,36 @@ import React from 'react';
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
 
-const HabitDataTab: React.FC = () => (
-  <Tabs
-    defaultActiveKey="2"
-    tabPosition='left'
-    items={[AppleOutlined, AndroidOutlined].map((Icon, i) => {
-      const id = String(i + 1);
+interface TabInfo {
+  tabs: any;
+}
 
-      return {
-        label: (
-          <span>
-            <Icon />
-            Tab {id}
-          </span>
-        ),
-        key: id,
-        children: `Tab ${id}`,
-      };
-    })}
-  />
-);
+
+
+const HabitDataTab = ( props: TabInfo ) => {
+  const { tabs } = props;
+
+  return (
+  <Tabs
+    defaultActiveKey={tabs.length}
+    tabPosition={'left'}
+
+    items={
+      tabs.map(
+        (tab: { icon: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; label: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; children: any; }) => {
+          return{
+            label: (<span>
+              {tab.icon}
+              <p>{tab.label}</p>
+            </span>),
+            key: tab.label,
+            children: tab.children
+          }
+        }
+      )
+    }
+
+  />) 
+};
 
 export default HabitDataTab;

@@ -1,4 +1,7 @@
 import { Drawer } from 'antd';
+import HabitDataTab from './HabitDataTab';
+import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+
 
 interface DarwerInfo {
   open: boolean;
@@ -8,7 +11,19 @@ interface DarwerInfo {
   contents: any;
 }
 
+const dummyTabs = [
+  {
+    icon: <AppleOutlined />,
+    label: 'Apple',
+    children: <p>Apple</p>
+  },
 
+  {
+    icon: <AndroidOutlined />,
+    label: 'AndroidOutlined',
+    children: <p>AndroidOutlined</p>
+  },
+]
 
 export const HabitDrawer = ( porps: DarwerInfo ) => {
   const {open, onClose, habit, contents, isPositionBottom} = porps;
@@ -22,6 +37,7 @@ export const HabitDrawer = ( porps: DarwerInfo ) => {
       height='85%'
     >
       {contents}
+      <HabitDataTab tabs={dummyTabs}/>
     </Drawer>
   );
 };
