@@ -1,5 +1,4 @@
 import React from 'react';
-import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
 
 interface TabInfo {
@@ -20,7 +19,7 @@ const HabitDataTab = ( props: TabInfo ) => {
       tabs.map(
         (tab: { icon: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; label: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; children: any; }) => {
           return{
-            label: (<span>
+            label: (<span className='tabLabel'>
               {tab.icon}
               <p>{tab.label}</p>
             </span>),

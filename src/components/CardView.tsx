@@ -6,7 +6,8 @@ import { useState } from 'react';
 import HabitDrawer from './Habit/HabitDrawer';
 import AllCheckPoints from './Habit/AllCheckPoints';
 import { triggerFocus } from 'antd/es/input/Input';
-
+import HabitDataTab from './Habit/HabitDataTab';
+import { DataTab } from './Habit/habitDataUtil';
 
 
 export interface habitInfo {
@@ -27,7 +28,10 @@ export const CardView = (props: habitInfo) => {
     setOpen(false);
   };
 
-  const drawerContents = <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>;
+  //const drawerContents = <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>;
+  
+  const drawerContents = <HabitDataTab tabs= {DataTab({habitId:habit.uuid, mainColor:habit.mainColor})} />
+
   return (
     <>
       <Card
@@ -55,7 +59,7 @@ export const CardView = (props: habitInfo) => {
 
       </Card>
 
-      <HabitDrawer open={open} onClose={onClose} habit={habit} contents={drawerContents} isPositionBottom={false}/>
+      <HabitDrawer open={open} onClose={onClose} habit={habit} contents={drawerContents} isPositionBottom={true}/>
 
     </>
 

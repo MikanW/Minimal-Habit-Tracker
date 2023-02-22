@@ -107,6 +107,10 @@
   border: 1px;
 }
 
+.tabLabel {
+  display: flex;
+  flex-direction: row;
+}
 
 /* daily */
 
