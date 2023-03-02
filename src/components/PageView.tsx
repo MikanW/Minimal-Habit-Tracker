@@ -1,7 +1,7 @@
 import { Pages } from './types'
 import Dataview from './Dataview';
 import AllHabits from './AllHabits';
-import Today from './Today';
+import Today from './Today/Today';
 
 
 

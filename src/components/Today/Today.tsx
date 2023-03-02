@@ -1,6 +1,7 @@
 import { Col, Row } from "antd";
-import CurrentTime from "./CurrentTime";
-import CardCalender from "./CalenderCard";
+import CurrentTime from "../CurrentTime";
+import CardCalender from "../CalenderCard";
+import HabitListDragable from "./HabitListDragable";
 
 const Today = () => {
   return (
@@ -10,7 +11,7 @@ const Today = () => {
           <CardCalender />
         </div>
         <div className="TodayRightCol">
-          <p>col 2</p>
+          <HabitListDragable />
         </div>
     </div>
 
