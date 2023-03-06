@@ -13,7 +13,6 @@ const SortableItem = SortableElement((value) => {
     <Card
       hoverable
       style={{
-        width: 300,
       }}
       className='Dragable-Cards'
     >
@@ -25,7 +24,7 @@ const SortableItem = SortableElement((value) => {
 const Container = SortableContainer((items) => {
 
   return (
-    <div>
+    <div className='Drable-Habit_list'>
       {
         items.items.map(
           (item, index) => {

@@ -54,7 +54,7 @@
 .Today {
   display: flex;
   align-items: center;
-  align-content: center;
+  align-content: start;
   padding-left: 5rem;
   padding-right: 5rem;
 
@@ -72,6 +72,7 @@
   flex-direction: column;
 
   margin-left: 2rem;
+  width: 20%;
 }
 
 .CurrentTimeCard {
@@ -83,8 +84,17 @@
   margin-top: 1.5rem;
 }
 
+.Drable-Habit_list {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+}
+
 .Dragable-Cards {
-  margin-top: 2rem;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 /* Habits */

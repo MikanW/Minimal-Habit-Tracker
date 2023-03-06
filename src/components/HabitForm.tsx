@@ -62,8 +62,8 @@ export const HabitForm = (props: HabitFormProps) => {
   }
 
   const updateHabitToDb = (value: any, uuid: string) => {
-    db.collection('users').doc(userId).collection("habits").doc(uuid)
-      .set({
+    db.collection('users').doc(userId).collection("habits").doc(uuid).update(
+      {
         name: value.name,
         slogan: value.slogan,
         mainColor: MainColor,
