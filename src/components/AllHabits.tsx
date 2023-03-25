@@ -4,9 +4,15 @@ import { Space } from 'antd'
 import { CardView } from './CardView'
 import { HabitForm } from './HabitForm'
 import { UserIdContext } from './../Data/context';
+import HabitCard from './Today/HabitCard'
 
+export interface AllHabitInfo {
+  type: string;
+}
 
-const AllHabits = () => {
+const AllHabits = ( props: AllHabitInfo ) => {
+  const { type } = props;
+
   const [habits, setHabits] = useState([]);
 
   const userId = useContext(UserIdContext);
@@ -28,8 +34,13 @@ const AllHabits = () => {
         wrap
         className="allHabitCards">
         {habits.map((habit) => (
+          
+          type == "today" ?
+          <HabitCard habit={habit} key={habit.uuid} className="habitCard"/>
+          :
           <CardView habit={habit} key={habit.uuid} className="habitCard" />
         ))}
+
         <HabitForm isNewHabit={true}/>
       </Space>
     );

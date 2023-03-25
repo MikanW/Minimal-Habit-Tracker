@@ -31,7 +31,6 @@ const DailyView: React.FC = () => {
           lalala
         </Timeline.Item>
       </Timeline>
-      <p>Daily</p>
     </div>
     
   );

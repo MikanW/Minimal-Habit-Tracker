@@ -5,7 +5,7 @@ import {
   ProFormText,
   ProFormDigit
 } from '@ant-design/pro-components';
-import { PlusCircleOutlined, EditOutlined } from '@ant-design/icons';
+import { PlusOutlined, EditOutlined } from '@ant-design/icons';
 import { db } from '../firebase'
 import uuid from 'react-uuid'
 import firebase from 'firebase';
@@ -20,13 +20,13 @@ interface FormProps {
 
 const newCheckPointTrigger = (
   <Popover content={"add new data into habit"} trigger="hover">
-    <EditOutlined key="editCheckPoint" />
+    <PlusOutlined key="addCheckPoint" />
   </Popover>
 );
 
 const editCheckPointTrigger = (
-  <Popover content={"add new data into habit"} trigger="hover">
-    <PlusCircleOutlined key="addCheckPoint" />
+  <Popover content={"edit data"} trigger="hover">
+    <EditOutlined key="editCheckPoint" />
   </Popover>
 )
 
