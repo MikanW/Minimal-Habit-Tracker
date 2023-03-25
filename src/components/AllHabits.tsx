@@ -41,7 +41,7 @@ const AllHabits = ( props: AllHabitInfo ) => {
           <CardView habit={habit} key={habit.uuid} className="habitCard" />
         ))}
 
-        <HabitForm isNewHabit={true}/>
+        {type == "today" ? <p></p> : <HabitForm isNewHabit={true}/>}
       </Space>
     );
 

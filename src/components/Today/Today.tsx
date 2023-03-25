@@ -14,7 +14,6 @@ const Today = () => {
           <AllHabits type="today"/>
         </div>
         <div className="TodayRightCol">
-          <h3> TimeLine </h3>
           <DailyView />
         </div>
     </div>
