@@ -58,10 +58,11 @@ class HeatMapView extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="heatmap">
           <div className="row">
             <div className="col-12 col-sm-6">
               <CalendarHeatmap
+
                 values={this.state.values}
                 classForValue={(value) => {
                   if (!value) {
@@ -75,9 +76,9 @@ class HeatMapView extends React.Component {
             </div>
           </div>{' '}
           <div className="text-sm-center mt-4">
-            <button className="btn btn-link btn-sm text-secondary" onClick={this.generateValues}>
+            {/* <button className="btn btn-link btn-sm text-secondary" onClick={this.generateValues}>
               Regenerate values
-            </button>
+            </button> */}
           </div>
           {/* <ReactTooltip /> */}
         </div>

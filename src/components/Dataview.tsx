@@ -16,18 +16,16 @@ export const DataView = (props: { type: string }) => {
 
   const setValue = (pickerValue: any): void => {
     viewValue = pickerValue;
-    console.log("lalala viewValue changed", viewValue);
     setDate(pickerValue);
   };
 
   return (
-    <div>
+    <div className='dataview'>
       <MyDatePicker
         pickerType={props.type}
         onValueChange={setValue}
       />
       {viewer}
-      <p>Current Date: {String(date)}</p>
     </div>
   );
 };

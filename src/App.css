@@ -131,3 +131,12 @@
 .timeLine {
   margin-top: 2rem;
 }
+
+/* dataview */
+.dataview {
+  width: 100%;
+}
+
+.heatmap {
+  width: 1000px;
+}
