@@ -12,3 +12,10 @@ export const Pages = Object.freeze({
 	settings: "Settings"
 });
 
+export interface CheckPoint {
+	createdAt: any;
+	note: string;
+	time: string;
+	uuid: string;
+	value: number;
+};
