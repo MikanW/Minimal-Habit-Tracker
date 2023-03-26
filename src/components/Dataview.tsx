@@ -2,21 +2,20 @@
 // import MyHeatMap from './MyHeatMap';
 import { useState } from 'react';
 import CalendarView from './CalenderView';
-import CardView from './CardView';
 import HeatMapView from './HeatMapView';
 import { MyDatePicker } from './MyDatePicker';
 import { Pages } from './types';
 import DailyView from './DailyView';
 
 export const DataView = (props: { type: string }) => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date);
   let viewValue = "";
 
-  let viewer = decideViewer(props.type);
+  let viewer = decideViewer(props.type, date);
 
   const setValue = (pickerValue: any): void => {
     viewValue = pickerValue;
-    setDate(pickerValue);
+    setDate(pickerValue.toDate());
   };
 
   return (
@@ -30,10 +29,16 @@ export const DataView = (props: { type: string }) => {
   );
 };
 
-const decideViewer = (type: string) => {
+const decideViewer = (type: string, date:Date) => {
   if (type === Pages.dataview.dailyView) {
-    //return <CardView />
-    return <DailyView />
+    if (date == undefined ){
+      return <DailyView date={new Date()}/>
+    }
+    else
+    {
+      return <DailyView date={date}/>
+    }
+
   }
 
   if (type === Pages.dataview.weeklyView) {

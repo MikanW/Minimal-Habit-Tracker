@@ -45,6 +45,8 @@ const CheckPointForm = (props: FormProps) => {
         note: value.note,
         uuid: newId,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        user: userId,
+        habit: habitId,
       })
       .then(() => {
       })
@@ -60,7 +62,7 @@ const CheckPointForm = (props: FormProps) => {
   const editCheckPoint = (value: any, checkPointUuid: string) => {
     db.collection('users').doc(userId).collection("habits").doc(habitId)
       .collection('checkPoints').doc(checkPointUuid)
-      .set({
+      .update({
         time: '1',
         value: value.count,
         note: value.note,

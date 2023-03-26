@@ -77,7 +77,9 @@
   padding: 2rem;
 }
 
-
+.TodayRightCol {
+  max-height: 100%;
+}
 
 .CurrentTimeCard {
   width: 100%;
@@ -88,17 +90,12 @@
   margin-top: 1.5rem;
 }
 
-.Drable-Habit_list {
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-
+.TimelineItem .checkPoint {
+  text-align: left;
 }
 
-.Dragable-Cards {
-  width: 100%;
-  margin-top: 1rem;
+.allCheckPoints {
+  margin-top: 2rem;
 }
 
 /* Habits */

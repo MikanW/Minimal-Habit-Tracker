@@ -34,3 +34,20 @@ export const DataTab = ( props: HabitInfo ) => {
   return habitDataTabs;
 }
 
+export const getHabitNameOfChkPt = ( habits:any[], habitId: string) => {
+  for ( let habit of habits ) {
+    if ( habitId == habit.uuid ) {
+      return habit.name;
+    }
+  }
+  return null;
+};
+
+export const getMainColorOfChkPt = ( habits:any[], habitId: string ) => {
+  for ( let habit of habits ) {
+    if ( habitId == habit.uuid ) {
+      return habit.mainColor;
+    }
+  }
+  return null;
+}

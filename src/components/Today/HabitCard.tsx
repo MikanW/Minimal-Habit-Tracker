@@ -2,10 +2,6 @@ import { Card, Popover} from 'antd';
 import { EllipsisOutlined, BarChartOutlined } from '@ant-design/icons';
 import HabitForm from './../HabitForm';
 import CheckPointForm from './../CheckPointForm';
-import { useState } from 'react';
-import HabitDrawer from './../Habit/HabitDrawer';
-import HabitDataTab from './../Habit/HabitDataTab';
-import { DataTab } from './../Habit/habitDataUtil';
 
 
 export interface habitInfo {
