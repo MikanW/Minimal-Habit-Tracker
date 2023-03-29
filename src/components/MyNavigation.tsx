@@ -4,60 +4,56 @@ import { useState } from 'react';
 
 const items = [
   {
-    label: '今天',
+    label: 'Today',
     key: 'Today',
     icon: <CarryOutOutlined />,
   },
   {
-    label: '习惯',
+    label: 'Habit',
     key: 'Habit',
     icon: <AppstoreAddOutlined />,
   },
   {
-    label: '数据汇总',
+    label: 'Dataview',
     key: 'Dataview',
     icon: <BarChartOutlined />,
     children: [
       {
         type: 'group',
-        label: '汇总',
+        label: 'Data',
         children: [
           {
-            label: '每日视图',
+            label: 'DailyView',
             key: 'day',
           },
           {
-            label: '周视图',
+            label: 'WeeklyView',
             key: 'week',
           },
           {
-            label: '月视图',
+            label: 'MonthlyView',
             key: 'month',
           },
           {
-            label: '年视图',
+            label: 'YearlyView',
             key: 'year',
           },
         ],
       },
       {
         type: 'group',
-        label: '分析',
+        label: 'Statistics',
         children: [
           {
-            label: 'Option 3',
+            label: 'Coming soon',
             key: 'setting:3',
-          },
-          {
-            label: 'Option 4',
-            key: 'setting:4',
           },
         ],
       },
     ],
   },
   {
-    label: '设置',
+    label: 'Settings',
     key: 'Settings',
     icon: <SettingOutlined />,
   },

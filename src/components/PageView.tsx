@@ -13,10 +13,10 @@ const PageView = (props: { type: string }) => {
 		page = <Today />;
 	}
 	else if (props.type == Pages.habit) {
-		page = <AllHabits />;
+		page = <AllHabits type={''} />;
 	}
 	else if (props.type == Pages.settings) {
-		page = <p>Settings!</p>;
+		page = <p>Settings coming soon!</p>;
 	}
 	else {
 		page = <Dataview type={props.type}/>

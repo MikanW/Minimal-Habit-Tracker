@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactTooltip from 'react-tooltip';
 import CalendarHeatmap from './react-calendar-heatmap/index.jsx';
 import './react-calendar-heatmap/styles.css';
 

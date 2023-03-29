@@ -10,8 +10,6 @@ interface DailyViewInfo {
   date: any;
 }
 
-
-
 const DailyView = (props: DailyViewInfo) => {
 
   const { date } = props;
