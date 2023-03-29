@@ -3,6 +3,8 @@
 ## Introduction
 
 This project is a habit tracker, using TypeScript, React and Firebase.
+
+
 このプロジェクトは習慣トラッキングツールです。TypeScript、ReactとFirebaseの技術を使っています。
 
 
@@ -16,7 +18,9 @@ This project is a habit tracker, using TypeScript, React and Firebase.
 
 
 Other features in progress :)
+
 他の機能も開発中 :)
+
 
 ## Capture キャプチャー
 
