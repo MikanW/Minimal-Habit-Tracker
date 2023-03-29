@@ -13,7 +13,7 @@ This project is a habit tracker, using TypeScript, React and Firebase.
 - Login with Google account　グーグルアカウントでログイン
 - Add and edit your habits 習慣の登録・変更
 - Add data into each habit 習慣毎にデータ登録
-- Data displayed in timeline データをデータをタイムラインで表示
+- Data displayed in timeline データタイムラインで表示
 - Clock and calendar 時計とカレンダー
 
 
