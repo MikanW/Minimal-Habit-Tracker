@@ -2,7 +2,7 @@ import { Avatar } from "antd";
 
 interface userInfo {
 	userName: string;
-	photoUrl: string;
+	photoUrl: string|null;
 }
 
 

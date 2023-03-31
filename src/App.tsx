@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
-
 import { Button, ConfigProvider } from 'antd';
-import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/plugin/updateLocale';
 import locale from 'antd/locale/zh_CN';
-import moment from 'moment';
-
-import './App.css';
 import Greeting from './components/Greeting';
 import MyNavigation from './components/MyNavigation';
 import { Pages } from './components/types';
@@ -67,16 +62,14 @@ function App() {
         <UserIdContext.Provider value={user.uid} >
           <div className="App">
             <div className="appBody">
-
               <div className='dashboard'>
                 <div className='header'>
                   <Greeting userName='Mikan' photoUrl={user.photoURL} />
-                  {SignOutBtn}
-                </div>
-
-                <MyNavigation
+                  <MyNavigation
                   setPageView={setPageView}
                 />
+                  {SignOutBtn}
+                </div>
                 <PageView
                   type={pageView}
                 />
