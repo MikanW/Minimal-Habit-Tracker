@@ -1,5 +1,4 @@
 
-// import MyHeatMap from './MyHeatMap';
 import { useState } from 'react';
 import CalendarView from './CalenderView';
 import HeatMapView from './HeatMapView';

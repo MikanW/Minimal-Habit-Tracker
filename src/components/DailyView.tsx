@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Card, Timeline } from 'antd';
 import { db } from '../firebase';
@@ -31,11 +31,6 @@ const DailyView = (props: DailyViewInfo) => {
     allCheckPoints.onSnapshot((snapshot) => {
       setCheckPoints(snapshot.docs.map(doc => doc.data()));
     })
-    // allCheckPoints.get().then((querySnapshot) => {
-    //   setCheckPoints(querySnapshot.docs.map(doc => doc.data()));
-    // });
-
-
   }, []);
 
   let data;
@@ -46,9 +41,7 @@ const DailyView = (props: DailyViewInfo) => {
       checkPoints.filter( (checkPoint) => (
         isSameDay(checkPoint.createdAt.toDate(), date)) )
       .map((checkPoint) => {
-      //checkPoints.map((checkPoint) => {
         let date = '';
-
         if (checkPoint.createdAt) {
           date = checkPoint.createdAt.toDate().toUTCString();
         }

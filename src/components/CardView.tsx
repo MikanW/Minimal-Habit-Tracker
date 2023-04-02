@@ -15,7 +15,6 @@ export interface habitInfo {
 
 export const CardView = (props: habitInfo) => {
   const { habit, className } = props;
-
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -25,8 +24,6 @@ export const CardView = (props: habitInfo) => {
   const onClose = () => {
     setOpen(false);
   };
-
-  //const drawerContents = <AllCheckPoints habitId={habit.uuid} mainColor={habit.mainColor}/>;
   
   const drawerContents = <HabitDataTab tabs= {DataTab({habitId:habit.uuid, mainColor:habit.mainColor})} />
 

@@ -3,11 +3,6 @@ import { arrayMoveImmutable } from "array-move";
 import { Card } from 'antd';
 import { useState } from 'react';
 
-
-// const DragHandle = SortableHandle(() => (
-//   <MenuOutlined style={{ cursor: "grab", color: "#999" }} />
-// ));
-
 const SortableItem = SortableElement((value) => {
   return (
     <Card

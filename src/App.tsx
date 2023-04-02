@@ -37,12 +37,14 @@ function App() {
   };
 
   const SignInBtn = (
-    <Button
-      size='large'
-      onClick={signInWithGoogle}
-    >
-      SignIn
-    </Button>
+    <div className='WrapperSignInBtn'>
+      <Button
+        size='large'
+        onClick={signInWithGoogle}
+      >
+        Sign In With Google
+      </Button>
+    </div>
   );
 
   const SignOutBtn = (
@@ -66,8 +68,8 @@ function App() {
                 <div className='header'>
                   <Greeting userName='Mikan' photoUrl={user.photoURL} />
                   <MyNavigation
-                  setPageView={setPageView}
-                />
+                    setPageView={setPageView}
+                  />
                   {SignOutBtn}
                 </div>
                 <PageView
