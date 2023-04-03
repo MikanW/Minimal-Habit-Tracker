@@ -39,7 +39,8 @@ const DailyView = (props: DailyViewInfo) => {
 
     data = (
       checkPoints.filter( (checkPoint) => (
-        isSameDay(checkPoint.createdAt.toDate(), date)) )
+        (checkPoint.createdAt) && (isSameDay(checkPoint.createdAt.toDate(), date)) 
+      ))
       .map((checkPoint) => {
         let date = '';
         if (checkPoint.createdAt) {
