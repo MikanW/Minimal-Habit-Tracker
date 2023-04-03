@@ -26,4 +26,4 @@ Other features in progress :)
 
 
 
-![CaptureOfHabitTracker](CaptureOfHabitTracker.png)
+![CaptureOfHabitTracker-dashborad](CaptureOfHabitTracker-dashboard.png)
