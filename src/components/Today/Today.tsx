@@ -2,6 +2,7 @@ import CurrentTime from "../CurrentTime";
 import CardCalender from "../CalenderCard";
 import AllHabits from "../AllHabits";
 import DailyView from "../DailyView";
+import Chat from "./chat";
 
 const Today = () => {
   return (
@@ -14,6 +15,7 @@ const Today = () => {
           <AllHabits type="today"/>
         </div>
         <div className="TodayRightCol">
+          <Chat />
           <DailyView date={new Date()}/>
         </div>
     </div>
