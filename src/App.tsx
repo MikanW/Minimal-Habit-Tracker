@@ -1,28 +1,26 @@
-import { useState } from 'react'
-import './App.css'
-import { Button, ConfigProvider } from 'antd';
-import 'dayjs/locale/zh-cn';
-import 'dayjs/plugin/updateLocale';
-import locale from 'antd/locale/zh_CN';
-import Greeting from './components/Greeting';
-import MyNavigation from './components/MyNavigation';
-import { Pages } from './components/types';
-import PageView from './components/PageView';
-import { auth, provider } from './firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { UserIdContext } from './Data/context';
-
-
+import { useState } from "react";
+import "./App.css";
+import { Button, ConfigProvider } from "antd";
+import "dayjs/locale/zh-cn";
+import "dayjs/plugin/updateLocale";
+import locale from "antd/locale/zh_CN";
+import Greeting from "./components/Greeting";
+import MyNavigation from "./components/MyNavigation";
+import { Pages } from "./components/types";
+import PageView from "./components/PageView";
+import { auth, provider } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { UserIdContext } from "./Data/context";
 
 function App() {
   const [pageView, setPageView] = useState(Pages.today);
   const [user, loading, error] = useAuthState(auth);
 
   const signInWithGoogle = () => {
-    auth.signInWithPopup(provider)
-      .then(() => {
-      }).catch((error) => {
-
+    auth
+      .signInWithPopup(provider)
+      .then(() => {})
+      .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         var email = error.email;
@@ -30,65 +28,48 @@ function App() {
 
         console.log(errorCode, errorMessage, email, credential);
       });
-  }
+  };
 
   const signOut = () => {
     auth.signOut();
   };
 
   const SignInBtn = (
-    <div className='WrapperSignInBtn'>
-      <Button
-        size='large'
-        onClick={signInWithGoogle}
-      >
+    <div className="WrapperSignInBtn">
+      <Button size="large" onClick={signInWithGoogle}>
         Sign In With Google
       </Button>
     </div>
   );
 
   const SignOutBtn = (
-    <Button
-      size='large'
-      onClick={signOut}
-      className='signInBtn'
-    >
+    <Button size="large" onClick={signOut} className="signInBtn">
       SignOut
     </Button>
   );
 
   if (user) {
-
     return (
-      <ConfigProvider locale={locale} >
-        <UserIdContext.Provider value={user.uid} >
+      <ConfigProvider locale={locale}>
+        <UserIdContext.Provider value={user.uid}>
           <div className="App">
             <div className="appBody">
-              <div className='dashboard'>
-                <div className='header'>
-                  <Greeting userName='Mikan' photoUrl={user.photoURL} />
-                  <MyNavigation
-                    setPageView={setPageView}
-                  />
+              <div className="dashboard">
+                <div className="header">
+                  <Greeting userName="Mikan" photoUrl={user.photoURL} />
+                  <MyNavigation setPageView={setPageView} className="nav" />
                   {SignOutBtn}
                 </div>
-                <PageView
-                  type={pageView}
-                />
+                <PageView type={pageView} />
               </div>
-
             </div>
           </div>
         </UserIdContext.Provider>
       </ConfigProvider>
-    )
-
-  }
-  else {
+    );
+  } else {
     return SignInBtn;
   }
-
 }
 
-
-export default App
+export default App;

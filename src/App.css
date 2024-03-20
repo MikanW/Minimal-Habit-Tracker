@@ -27,6 +27,9 @@
 }
 
 .header {
+  background-image: url("/images/headerBg.jpg");
+  background-size: cover;
+  border-radius: 10px;
   width: 1200px;
   display: flex;
   flex-direction: row;
@@ -44,14 +47,27 @@
   justify-content: space-between;
 
   margin-left: 5rem;
+  margin-top: 10rem;
 }
 
 .greeting {
+  font-size: 2rem;
   margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.868);
+}
+
+.nav {
+  background-color: rgba(161, 161, 161, 0.39);
+  margin-top: 10rem;
+  color: white;
+  border-radius: 10px;  
 }
 
 .signInBtn {
   margin-right: 5rem;
+  background-color: rgba(161, 161, 161, 0.39);
+  color: white;
+  margin-top: 10rem;
 }
 
 
