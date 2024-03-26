@@ -58,5 +58,6 @@ Dashboardでは、習慣と今日完成した分が表示されるだけでな�
 ## Capture キャプチャー
 
 
+![homepage](info/preview_homepage.png)
 
-![CaptureOfHabitTracker-dashborad](CaptureOfHabitTracker-dashboard.png)
+![add_habit](info/preview_add_habit.png)
